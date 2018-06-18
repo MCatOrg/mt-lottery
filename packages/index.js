@@ -1,4 +1,5 @@
 import Button from './components/button';
+import './index.less'
 
 const components = {
     Button,
