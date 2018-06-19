@@ -8,7 +8,8 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "prod": "webpack --progress --hide-modules --config build/webpack.build.conf.js"
+    "build:ui": "webpack --progress --hide-modules --config build/webpack.build.conf.js",
+    "prod": "npm run build && npm run build:ui"
   },
   "dependencies": {
     "vue": "^2.5.2",

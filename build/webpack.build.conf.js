@@ -6,8 +6,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './packages/index.js',
     output: {
-        path: path.resolve(__dirname, '../dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, '../dist/lib'),
+        publicPath: '/dist/lib/',
         filename: 'myUI.min.js',
         library: 'myUI',
         libraryTarget: 'umd',
