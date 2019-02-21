@@ -1,16 +1,20 @@
 <style lang="less" scoped>
-.lottery{margin: 0 auto; border-radius: 8px;}
+.mtlottery{margin: 0 auto; border-radius: 8px;}
 </style>
 
 <template>
     <div>
         <!-- 默认 -->
         <h1>默认</h1>
-        <Lottery ref="mtLottery1" @onend="onend" :list="list" @onsubmit="request('mtLottery1')" class="lottery"></Lottery>
+        <lottery-grid ref="mtLottery1" @onend="onend" :list="list" @onsubmit="request('mtLottery1')" class="mtlottery"></lottery-grid>
 
         <!-- 配置 -->
         <h1>配置</h1>
-        <Lottery ref="mtLottery2" @onend="onend" :list="list" v-bind="lotteryOption" @onsubmit="request('mtLottery2')" class="lottery"></Lottery>
+        <lottery-grid ref="mtLottery2" @onend="onend" :list="list" v-bind="lotteryOption" @onsubmit="request('mtLottery2')" class="mtlottery"></lottery-grid>
+
+        <!-- 按钮在外 -->
+        <h1>按钮在外</h1>
+        <lottery-list ref="mtLottery3" @onend="onend" :list="list" v-bind="lotteryOption" @onsubmit="request('mtLottery3')" class="mtlottery"></lottery-list>
     </div>
 </template>
 <script>
@@ -43,15 +47,16 @@ export default {
                 }
             ],
             lotteryOption: {
-                padding: 10,                 //每个块的间隔 默认：4 单位：px
+                padding: 10,                //每个块的间隔 默认：4 单位：px
                 radius: 8,                  //每个块的圆角值 默认：8 单位：px
-                btnCircle: false,           //中间抽奖按钮是否是圆形，默认否 false
+                btnCircle: false,           //中间抽奖按钮是否是圆形，九宫格grid默认否 false，列表list默认为true
                 circleTimes: 3,             //转圈动画次数 Number 默认：3 单位：次
-                defaultLuckyIndex: 7,       //默认中奖位置，默认：7，最后一个
                 forLucky: false,            //是否采用前端随机抽奖，默认否 false （不安全，不建议使用，优先级比onend函数传入的值高）
                 size: 200,                  //每个块的大小，默认：100，单位：px，最小：80
                 velocity: 'speed',          //抽奖跳动动画：speed:慢-快-慢；invariance:匀速
-                lotteryBg: 'aqua',          //背景图
+                lotteryStyle: {             //列表盒子的样式
+                    backgroundColor: 'aqua',
+                },
                 itemStyle: {                //小块的样式，Object 默认不传
                     backgroundColor: 'antiquewhite',
                 },

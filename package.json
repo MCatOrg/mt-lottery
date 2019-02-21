@@ -1,8 +1,8 @@
 {
-  "name": "imcatlottery",
-  "version": "1.0.0",
+  "name": "mt-lottery",
+  "version": "1.0.7",
   "description": "A Vue.js project",
-  "main": "dist/mt-lottery.min.js",
+  "main": "dist/lib/mt-lottery.min.js",
   "author": "",
   "private": false,
   "scripts": {
@@ -10,7 +10,9 @@
     "start": "npm run dev",
     "build": "node build/build.js",
     "build:ui": "webpack --progress --hide-modules --config build/webpack.build.conf.js",
-    "prod": "npm run build && npm run build:ui"
+    "prod": "npm run build && npm run build:ui",
+    "docs:dev": "vuepress dev guide/docs",
+    "docs:build": "vuepress build guide/docs"
   },
   "dependencies": {
     "vue": "^2.5.2",
