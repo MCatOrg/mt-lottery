@@ -48,7 +48,7 @@ module.exports = {
         hints: false
     },
     plugins: [
-        new ExtractTextPlugin('./mt-lottery.min.css'),
+        new ExtractTextPlugin('./lib/mt-lottery.min.css'),
         new UglifyJsPlugin({
             uglifyOptions: {
                 compress: {
