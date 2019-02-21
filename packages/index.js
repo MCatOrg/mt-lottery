@@ -1,5 +1,5 @@
+import './utils/rem';
 import './utils/index'
-
 import Lottery from './components/Lottery';
 import './index.less'
 

@@ -26,14 +26,14 @@ export default {
         },
         size: {
             type: Number,
-            default: 100,
+            default: 200,
         },
     },
     computed: {
         style(){
             return {
-                width: this.size + 'px',
-                height: this.size + 'px',
+                width: this.size / 100 + 'rem',
+                height: this.size / 100 + 'rem',
             }
         }
     }
