@@ -1,5 +1,11 @@
 # 介绍
 
+## Github
+
+<!-- [![weibo-logo]](http://weibo.com/linpiaochen) -->
+![GitHub](./images/github.png)
+[mt-lottery](https://github.com/MCatOrg/mt-lottery)
+
 ## 安装
 
 ```javascript
