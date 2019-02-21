@@ -25,12 +25,12 @@
 ```html
     <template>
         <div>
-            <Lottery 
+            <lottery-grid
                 ref="mtlottery" 
                 v-on:onsubmit="onsubmit" 
                 v-on:onend="onend" 
                 v-bind:list="list"
-            ></Lottery>
+            ></lottery-grid>
         </div>
     </template>
 ```
