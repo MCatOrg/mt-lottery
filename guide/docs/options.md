@@ -4,15 +4,16 @@
 
 ```javascript
 
-    padding: 4,                 //每个块的间隔 默认：4 单位：px
+    padding: 10,                //每个块的间隔 默认：4 单位：px
     radius: 8,                  //每个块的圆角值 默认：8 单位：px
-    btnCircle: false,           //中间抽奖按钮是否是圆形，默认否 false
+    btnCircle: false,           //中间抽奖按钮是否是圆形，九宫格grid默认否 false，列表list默认为true
     circleTimes: 3,             //转圈动画次数 Number 默认：3 单位：次
-    defaultLuckyIndex: 7,       //默认中奖位置，默认：7，最后一个
     forLucky: false,            //是否采用前端随机抽奖，默认否 false （不安全，不建议使用，优先级比onend函数传入的值高）
-    size: 100,                  //每个块的大小，默认：100，单位：px，最小：80
+    size: 200,                  //每个块的大小，默认：100，单位：px，最小：80
     velocity: 'speed',          //抽奖跳动动画：speed:慢-快-慢；invariance:匀速
-    lotteryBg: 'aqua',          //背景颜色
+    lotteryStyle: {             //列表盒子的样式
+        backgroundColor: 'aqua',
+    },
     itemStyle: {                //小块的样式，Object 默认不传
         backgroundColor: 'antiquewhite',
     },

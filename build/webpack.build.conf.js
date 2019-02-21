@@ -6,8 +6,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './packages/index.js',
     output: {
-        path: path.resolve(__dirname, '../dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, '../dist/lib'),
+        publicPath: '/dist/lib/',
         filename: 'mt-lottery.min.js',
         library: 'mt-lottery',
         libraryTarget: 'umd',

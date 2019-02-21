@@ -1,8 +1,8 @@
 {
   "name": "mt-lottery",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A Vue.js project",
-  "main": "dist/mt-lottery.min.js",
+  "main": "dist/lib/mt-lottery.min.js",
   "author": "",
   "private": false,
   "scripts": {

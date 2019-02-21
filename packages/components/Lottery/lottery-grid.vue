@@ -5,7 +5,7 @@
 .float_right{float: right;}
 </style>
 <template>
-    <div class="lottery" :style="LotteryStyle">
+    <div class="lottery" :style="cLotteryStyle">
         <div>
             <lottery-item 
                 :style="[LotteryItemStyle, itemStyle, index === listIndex ? cItemCurStyle : '']" 
@@ -106,14 +106,6 @@ export default {
             type: Number,
             default: 3,
         },
-        //默认中奖位置
-        defaultLuckyIndex: {
-            type: [Number, String],
-            default: 7,
-            validator: function (value) {
-                return [0,1,2,3,4,5,6,7].indexOf(value) !== -1
-            }
-        },
         //是否采用前端随机抽奖-不安全-建议不使用
         forLucky: {
             type: Boolean,
@@ -130,6 +122,12 @@ export default {
             default: 'speed',
             validator: function (value) {
                 return ['invariance', 'speed'].indexOf(value) !== -1
+            }
+        },
+        lotteryStyle: {
+            type: Object,
+            default: function(){
+                return {}
             }
         },
         //块的样式
@@ -158,13 +156,6 @@ export default {
         }
     },
     computed: {
-        cDefaultLuckyIndex(){
-            let defaultLuckyIndex = 7
-            if(this.defaultLuckyIndex > -1 && this.defaultLuckyIndex < 8){
-                defaultLuckyIndex = this.defaultLuckyIndex
-            }
-            return defaultLuckyIndex
-        },
         cItemCurStyle(){
             return Object.assign({
                 backgroundColor: '#FAC7C7'
@@ -198,14 +189,18 @@ export default {
             }
             return this.padding
         },
-        LotteryStyle(){
-            return {
+        cLotteryStyle(){
+            let style = {
                 paddingLeft: this.pad / 100 + 'rem',
                 paddingTop: this.pad / 100 + 'rem',
                 width: 3 * (this.itemSize + this.pad) / 100 + 'rem',
                 height: 3 * (this.itemSize + this.pad) / 100 + 'rem',
                 backgroundColor: this.lotteryBg
             }
+            if(Object.prototype.toString.call(this.lotteryStyle) === '[object Object]') {
+                style = Object.assign(style, this.lotteryStyle)
+            }
+            return style
         },
         LotteryItemStyle(){
             return {
@@ -237,13 +232,27 @@ export default {
             if(this.forLucky){      //开启了随机抽奖（不安全）
                 luckyIndex = Math.rndNum(0,7)
             }else{
-                luckyIndex = Number(index) ? Number(index) : this.cDefaultLuckyIndex
+                luckyIndex = Number(index)
+
+                if(isNaN(luckyIndex)) {
+                    console.error('go()函数传入值应该为Number类型，请检查')
+                    this.$emit('onerror', {
+                        index: index,
+                        message: 'go()函数传入值应该为Number类型，请检查'
+                    })
+                    return
+                }
+
+                if(luckyIndex < 0 || luckyIndex >= this.luckyList.length){
+                    console.error('go()函数传入值应该为在 [0-' + (this.luckyList.length - 1) + '] 区间内，请检查')
+                    this.$emit('onerror', {
+                        index: index,
+                        message: 'go()函数传入值应该为在 [0-' + (this.luckyList.length - 1) + '] 区间内，请检查'
+                    })
+                    return
+                }
             }
 
-            if(isNaN(luckyIndex) || luckyIndex < 0 || luckyIndex > 8) {
-                console.error('luckyIndex值应该为Number类型，并且在 [0-7] 区间内，请检查')
-                return
-            }
             this.luckyIndex = luckyIndex        //中奖索引
             this.hasCircleTimes = 0             //初始化转圈圈数
             this.listIndex += 1                 //立即切换到下个位置

@@ -1,10 +1,11 @@
 import './utils/rem';
 import './utils/index'
-import Lottery from './components/Lottery';
+import { LotteryGrid, LotteryList } from './components/Lottery';
 import './index.less'
 
 const components = {
-    Lottery,
+    LotteryGrid,
+    LotteryList,
 };
 
 const install = function(Vue) {
@@ -20,8 +21,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     install,
-    Lottery,
+    LotteryGrid,
+    LotteryList,
 };
 export {
-    Lottery,
+    LotteryGrid,
+    LotteryList,
 }
