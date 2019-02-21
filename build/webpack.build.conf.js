@@ -6,10 +6,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
     entry: './packages/index.js',
     output: {
-        path: path.resolve(__dirname, '../dist/lib'),
-        publicPath: '/dist/lib/',
-        filename: 'myUI.min.js',
-        library: 'myUI',
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: '/dist/',
+        filename: 'mt-lottery.min.js',
+        library: 'mt-lottery',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
@@ -48,7 +48,7 @@ module.exports = {
         hints: false
     },
     plugins: [
-        new ExtractTextPlugin('./myUI.min.css'),
+        new ExtractTextPlugin('./mt-lottery.min.css'),
         new UglifyJsPlugin({
             uglifyOptions: {
                 compress: {

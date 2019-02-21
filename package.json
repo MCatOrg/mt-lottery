@@ -1,9 +1,10 @@
 {
-  "name": "vue-npm-demo",
-  "version": "1.0.0",
+  "name": "mt-lottery",
+  "version": "1.0.6",
   "description": "A Vue.js project",
+  "main": "dist/mt-lottery.min.js",
   "author": "",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

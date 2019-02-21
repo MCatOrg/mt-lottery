@@ -3,12 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import myUI from '../packages/index'
-import {Button} from '../packages/index'
+import myUI from '../packages/index'
+// import {Button} from '../packages/index'
 import '../packages/index.less'
 
-// Vue.use(myUI)
-Vue.component(Button.name, Button)
+Vue.use(myUI)
+// Vue.component(Button.name, Button)
 
 Vue.config.productionTip = false
 

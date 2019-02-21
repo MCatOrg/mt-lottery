@@ -1,8 +1,10 @@
-import Button from './components/button';
+import './utils/index'
+
+import Lottery from './components/Lottery';
 import './index.less'
 
 const components = {
-    Button,
+    Lottery,
 };
 
 const install = function(Vue) {
@@ -18,8 +20,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     install,
-    Button,
+    Lottery,
 };
 export {
-    Button,
+    Lottery,
 }
