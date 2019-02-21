@@ -86,10 +86,10 @@ export default {
             type: Array,
             required: true,
         },
-        //间隔，最大：10 单位：px
+        //间隔，最大：20 单位：px
         padding: {
             type: [String, Number],
-            default: 4,
+            default: 10,
         },
         //每个块的圆角值 允许 % 默认单位：px
         radius: {
@@ -119,10 +119,10 @@ export default {
             type: Boolean,
             default: false,
         },
-        //每个块的大小 最小值：80 单位：px
+        //每个块的大小 最小值：200 单位：px
         size: {
             type: [String, Number],
-            default: 100,
+            default: 200,
         },
         //跳动的动画，默认 慢-快-慢
         velocity: {
@@ -192,35 +192,35 @@ export default {
         },
         //间隔值
         pad(){
-            if(this.padding > 10){
-                console.error('抽奖器：padding值应该小于等于10')
-                return 10
+            if(this.padding > 20){
+                console.error('抽奖器：padding值应该小于等于20')
+                return 20
             }
             return this.padding
         },
         LotteryStyle(){
             return {
-                paddingLeft: this.pad + 'px',
-                paddingTop: this.pad + 'px',
-                width: 3 * (this.itemSize + this.pad) + 'px',
-                height: 3 * (this.itemSize + this.pad) + 'px',
+                paddingLeft: this.pad / 100 + 'rem',
+                paddingTop: this.pad / 100 + 'rem',
+                width: 3 * (this.itemSize + this.pad) / 100 + 'rem',
+                height: 3 * (this.itemSize + this.pad) / 100 + 'rem',
                 backgroundColor: this.lotteryBg
             }
         },
         LotteryItemStyle(){
             return {
-                marginRight: this.pad + 'px',
-                marginBottom: this.pad + 'px',
-                borderRadius: isNaN(Number(this.radius)) ? this.radius : this.radius + 'px'
+                marginRight: this.pad / 100 + 'rem',
+                marginBottom: this.pad / 100 + 'rem',
+                borderRadius: isNaN(Number(this.radius)) ? this.radius : this.radius / 100 + 'rem'
             }
         },
         // 每个块的大小
         itemSize(){
             let size = Number(this.size)
 
-            if(isNaN(size)) return 100
+            if(isNaN(size)) return 200
 
-            if(size < 80) size = 80
+            if(size < 160) size = 160
 
             return size
         }
