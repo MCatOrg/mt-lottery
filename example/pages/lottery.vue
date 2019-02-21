@@ -58,6 +58,7 @@ export default {
                 itemCurStyle: {             //cur状态下的item样式，Object 默认不传
                     backgroundColor: 'aqua',
                 },
+                lotteryImageSize: 80
                 // btnStyle: '',            //中间抽奖按钮的样式，Object 默认不传
             }
         }

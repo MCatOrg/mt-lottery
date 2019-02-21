@@ -15,6 +15,7 @@
                 v-for="(item, index) in luckyList.slice(0,3)" 
                 :key="index" 
                 :label="item.label"
+                :imageSize="lotteryImageSize"
             ></lottery-item>
         </div>
         <div>
@@ -27,6 +28,7 @@
                 v-for="(item, index) in luckyList.slice(3,4)" 
                 :key="index + 3" 
                 :label="item.label"
+                :imageSize="lotteryImageSize"
             ></lottery-item>
             <!-- 按钮 -->
             <lottery-go 
@@ -43,6 +45,7 @@
                 v-for="(item, index) in luckyList.slice(-1)" 
                 :key="index + 7" 
                 :label="item.label"
+                :imageSize="lotteryImageSize"
             ></lottery-item>
         </div>
         <div>
@@ -54,6 +57,7 @@
                 v-for="(item, index) in luckyList.slice(4,7)" 
                 :key="index + 4" 
                 :label="item.label"
+                :imageSize="lotteryImageSize"
             ></lottery-item>
         </div>
     </div>
@@ -119,10 +123,10 @@ export default {
             type: Boolean,
             default: false,
         },
-        //每个块的大小 最小值：200 单位：px
+        //每个块的大小 最小值：140 单位：px
         size: {
             type: [String, Number],
-            default: 200,
+            default: 140,
         },
         //跳动的动画，默认 慢-快-慢
         velocity: {
@@ -155,6 +159,10 @@ export default {
         lotteryBg: {
             type: String,
             default: '#CC2510'
+        },
+        lotteryImageSize: {
+            type: [String, Number],
+            default: 50,
         }
     },
     computed: {
@@ -220,7 +228,7 @@ export default {
 
             if(isNaN(size)) return 200
 
-            if(size < 160) size = 160
+            if(size < 140) size = 140
 
             return size
         }

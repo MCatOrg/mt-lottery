@@ -5,7 +5,7 @@
 </style>
 <template>
     <div :style="style" :class="['item', 'lottery_flex-center', 'lottery_column', 'lottery_shrink']">
-        <img class="item_image" v-if="image" :src="image" alt="">
+        <img class="item_image" :style="itemImageStyle" v-if="image" :src="image" alt="">
         <span>{{label}}</span>
     </div>
 </template>
@@ -28,12 +28,22 @@ export default {
             type: Number,
             default: 200,
         },
+        imageSize: {
+            type: Number,
+            default: 50,
+        }
     },
     computed: {
         style(){
             return {
                 width: this.size / 100 + 'rem',
                 height: this.size / 100 + 'rem',
+            }
+        },
+        itemImageStyle(){
+            return {
+                width: this.imageSize / 100 + 'rem',
+                height: this.imageSize / 100 + 'rem',
             }
         }
     }

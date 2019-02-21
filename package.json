@@ -1,6 +1,6 @@
 {
-  "name": "mt-lottery",
-  "version": "1.0.6",
+  "name": "imcatlottery",
+  "version": "1.0.0",
   "description": "A Vue.js project",
   "main": "dist/mt-lottery.min.js",
   "author": "",
