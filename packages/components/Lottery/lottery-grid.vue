@@ -16,6 +16,7 @@
                 :key="index" 
                 :label="item.label"
                 :imageSize="lotteryImageSize"
+                :isUseRem="isUseRem"
             ></lottery-item>
         </div>
         <div>
@@ -29,12 +30,14 @@
                 :key="index + 3" 
                 :label="item.label"
                 :imageSize="lotteryImageSize"
+                :isUseRem="isUseRem"
             ></lottery-item>
             <!-- 按钮 -->
             <lottery-go 
                 @click.native="onsubmit" 
                 :style="[LotteryItemStyle, btnCircle ? {borderRadius: '50%'} : '', btnStyle]" 
                 :size="itemSize" 
+                :isUseRem="isUseRem"
                 :class="['lottery_item', 'float_right']" 
             ></lottery-go>
             <lottery-item 
@@ -46,6 +49,7 @@
                 :key="index + 7" 
                 :label="item.label"
                 :imageSize="lotteryImageSize"
+                :isUseRem="isUseRem"
             ></lottery-item>
         </div>
         <div>
@@ -58,6 +62,7 @@
                 :key="index + 4" 
                 :label="item.label"
                 :imageSize="lotteryImageSize"
+                :isUseRem="isUseRem"
             ></lottery-item>
         </div>
     </div>
@@ -115,10 +120,10 @@ export default {
             type: Boolean,
             default: false,
         },
-        //每个块的大小 最小值：140 单位：px
+        //每个块的大小 px最小值：100 rem最小值: 160
         size: {
             type: [String, Number],
-            default: 140,
+            default: 100,
         },
         //跳动的动画，默认 慢-快-慢
         velocity: {
@@ -161,7 +166,11 @@ export default {
         lotteryImageSize: {
             type: [String, Number],
             default: 50,
-        }
+        },
+        isUseRem:{
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         cItemCurStyle(){
@@ -198,32 +207,39 @@ export default {
             return this.padding
         },
         cLotteryStyle(){
+            let pad = this.isUseRem ? this.pad / 100 + 'rem' : this.pad + 'px'
+            let size = this.isUseRem ? 3 * (this.itemSize + this.pad) / 100 + 'rem' : 3 * (this.itemSize + this.pad) + 'px'
             let style = {
-                paddingLeft: this.pad / 100 + 'rem',
-                paddingTop: this.pad / 100 + 'rem',
-                width: 3 * (this.itemSize + this.pad) / 100 + 'rem',
-                height: 3 * (this.itemSize + this.pad) / 100 + 'rem',
+                paddingLeft: pad,
+                paddingTop: pad,
+                width: size,
+                height: size,
                 backgroundColor: this.lotteryBg
             }
+            
             if(Object.prototype.toString.call(this.lotteryStyle) === '[object Object]') {
                 style = Object.assign(style, this.lotteryStyle)
             }
             return style
         },
         LotteryItemStyle(){
-            return {
-                marginRight: this.pad / 100 + 'rem',
-                marginBottom: this.pad / 100 + 'rem',
-                borderRadius: isNaN(Number(this.radius)) ? this.radius : this.radius / 100 + 'rem'
+            let mar = this.isUseRem ? this.pad / 100 + 'rem' : this.pad + 'px'
+            let radius =this.isUseRem ? isNaN(Number(this.radius)) ? this.radius : this.radius / 100 + 'rem': isNaN(Number(this.radius)) ? this.radius : this.radius + 'px'
+
+            let style = {
+                marginRight: mar,
+                marginBottom: mar,
+                borderRadius: radius
             }
+            return style
         },
         // 每个块的大小
         itemSize(){
             let size = Number(this.size)
 
             if(isNaN(size)) return 200
-
-            if(size < 140) size = 140
+            let minSize = this.isUseRem ? 160 : 100
+            if(size < minSize) size = minSize
 
             return size
         }

@@ -15,6 +15,11 @@
         <!-- 按钮在外 -->
         <h1>按钮在外</h1>
         <lottery-list ref="mtLottery3" @onend="onend" :list="list" v-bind="lotteryOption" @onsubmit="request('mtLottery3')" class="mtlottery"></lottery-list>
+        
+        <!-- rem -->
+        <h1>rem</h1>
+        <lottery-grid ref="mtLottery4" @onend="onend" :list="list" @onsubmit="request('mtLottery4')"  v-bind="lotteryOption2" class="mtlottery"></lottery-grid>
+
     </div>
 </template>
 <script>
@@ -65,6 +70,9 @@ export default {
                 },
                 lotteryImageSize: 80
                 // btnStyle: '',            //中间抽奖按钮的样式，Object 默认不传
+            },
+            lotteryOption2: {
+                isUseRem: true
             }
         }
     },

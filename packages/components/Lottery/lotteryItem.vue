@@ -31,20 +31,28 @@ export default {
         imageSize: {
             type: Number,
             default: 50,
-        }
+        },
+        isUseRem:{
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         style(){
-            return {
-                width: this.size / 100 + 'rem',
-                height: this.size / 100 + 'rem',
+            let size = this.isUseRem ? this.size / 100 + 'rem' : this.size + 'px'
+            let style = {
+                width: size,
+                height: size,
             }
+            return style
         },
         itemImageStyle(){
-            return {
-                width: this.imageSize / 100 + 'rem',
-                height: this.imageSize / 100 + 'rem',
+            let size = this.isUseRem ? this.imageSize / 100 + 'rem' : this.imageSize + 'px'
+            let style = {
+                width: size,
+                height: size,
             }
+            return style
         }
     }
 }
