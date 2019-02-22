@@ -8,7 +8,7 @@ import myUI from '../packages/index'
 import '../packages/index.less'
 
 Vue.use(myUI, {
-  isUseRem: true
+  // isUseRem: true     //初始化配置
 })
 // Vue.component(Button.name, Button)
 
