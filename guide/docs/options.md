@@ -11,6 +11,8 @@
     forLucky: false,            //是否采用前端随机抽奖，默认否 false （不安全，不建议使用，优先级比onend函数传入的值高）
     size: 200,                  //每个块的大小，默认：100，单位：px，最小：80
     velocity: 'speed',          //抽奖跳动动画：speed:慢-快-慢；invariance:匀速
+    lotteryImageSize: 50,       //每个块的图片大小，默认50
+    isUseRem: false,            //是否使用rem控制大小，0.2rem = 20px / 100
     lotteryStyle: {             //列表盒子的样式
         backgroundColor: 'aqua',
     },
@@ -20,7 +22,19 @@
     itemCurStyle: {             //cur状态下的item样式，Object 默认不传
         backgroundColor: 'aqua',
     },
+
     // btnStyle: '',            //中间抽奖按钮的样式，Object 默认不传
+
+```
+
+## 初始化赋值
+
+```javascript
+    
+    import mtlottery from 'mt-lottery'
+    Vue.use(mtlottery, {
+        isUseRem: true,         //是否使用rem控制大小，0.2rem = 20px / 100 默认不使用，false
+    })
 
 ```
 

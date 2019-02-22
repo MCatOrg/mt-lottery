@@ -14,7 +14,7 @@
 
         <!-- 按钮在外 -->
         <h1>按钮在外</h1>
-        <lottery-list ref="mtLottery3" @onend="onend" :list="list" v-bind="lotteryOption" @onsubmit="request('mtLottery3')" class="mtlottery"></lottery-list>
+        <lottery-list ref="mtLottery3" @onend="onend" :list="list" @onsubmit="request('mtLottery3')" class="mtlottery"></lottery-list>
         
         <!-- rem -->
         <h1>rem</h1>
@@ -57,7 +57,7 @@ export default {
                 btnCircle: false,           //中间抽奖按钮是否是圆形，九宫格grid默认否 false，列表list默认为true
                 circleTimes: 3,             //转圈动画次数 Number 默认：3 单位：次
                 forLucky: false,            //是否采用前端随机抽奖，默认否 false （不安全，不建议使用，优先级比onend函数传入的值高）
-                size: 200,                  //每个块的大小，默认：100，单位：px，最小：80
+                size: 100,                  //每个块的大小，默认：100，单位：px，最小：80
                 velocity: 'speed',          //抽奖跳动动画：speed:慢-快-慢；invariance:匀速
                 lotteryStyle: {             //列表盒子的样式
                     backgroundColor: 'aqua',
@@ -82,6 +82,7 @@ export default {
             setTimeout(()=>{
                 let luckyIndex = Math.rndNum(0,7)
                 console.log(luckyIndex)
+                this.$refs[name].go(luckyIndex)
                 this.$refs[name].go(luckyIndex)
             }, 100)
         },

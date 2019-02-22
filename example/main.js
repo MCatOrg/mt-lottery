@@ -7,7 +7,9 @@ import myUI from '../packages/index'
 // import {Button} from '../packages/index'
 import '../packages/index.less'
 
-Vue.use(myUI)
+Vue.use(myUI, {
+  isUseRem: true
+})
 // Vue.component(Button.name, Button)
 
 Vue.config.productionTip = false

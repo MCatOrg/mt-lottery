@@ -8,11 +8,13 @@ const components = {
     LotteryList,
 };
 
-const install = function(Vue) {
+const install = function(Vue, config = {}) {
     if (install.installed) return;
     Object.keys(components).forEach(key => {
         Vue.component(key, components[key]);
     });
+
+    Vue.prototype.$config = config
 };
   
 if (typeof window !== 'undefined' && window.Vue) {

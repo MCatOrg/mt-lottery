@@ -6,7 +6,7 @@
 <template>
     <div :style="style" :class="['item', 'lottery_flex-center', 'lottery_column', 'lottery_shrink']">
         <img class="item_image" :style="itemImageStyle" v-if="image" :src="image" alt="">
-        <span>{{label}}</span>
+        <span v-if="label">{{label}}</span>
     </div>
 </template>
 <script>
