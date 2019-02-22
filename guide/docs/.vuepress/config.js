@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'mt-lottery',
+    title: 'imcat-lottery',
     description: '基于Vue的抽奖UI组件',
     base: '/mt-lottery/',
     themeConfig : {

@@ -4,19 +4,19 @@
 
 <!-- [![weibo-logo]](http://weibo.com/linpiaochen) -->
 ![GitHub](./images/github.png)
-[mt-lottery](https://github.com/MCatOrg/mt-lottery)
+[imcat-lottery](https://github.com/MCatOrg/mt-lottery)
 
 ## 安装
 
 ```javascript
-    npm install --save-dev mt-lottery
+    npm install --save-dev imcat-lottery
 ```
 
 ## 声明
 
 > main.js
 ```javascript
-    import mtlottery from 'mt-lottery'
+    import mtlottery from 'imcat-lottery'
     Vue.use(mtlottery)
 ```
 
